@@ -1,0 +1,19 @@
+{
+  "basics 1": {
+    "scope": "typescript",
+    "prefix": "basics-1",
+    "body": ["function getValue(key: string) {", "\treturn myObj[key];", "}", "\ngetValue('asd');"]
+  },
+  "strip 1":{
+    "prefix": "strip-1",
+    "body": "T[P] extends CannotCreateOrUpdate<infer U>\n\t\t?U\n\t\t:T "
+  },
+  "strip 2":{
+    "prefix": "strip-2",
+    "body": "extends CannotCreate<infer U>\n\t\t?U\n\t\t:T "
+  },
+  "strip 3":{
+    "prefix": "strip-3",
+    "body": "extends CannotUpdate<infer U>\n\t\t?U\n\t\t:T "
+  }
+}
