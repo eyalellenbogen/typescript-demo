@@ -11,10 +11,12 @@ export type Gridlines = 'x' | 'y' | 'both';
 // --------- GENERATOR INTERFACE -----------
 // -----------------------------------------
 
-export interface IGenerator {
-  withLegend: () => IGenerator;
-  withTitle: (title: string) => IGenerator;
-  withGridLines: (which: Gridlines) => IGenerator;
-  withTooltip: () => IGenerator;
+type Omitter<O extends string> = Omit<IGenerator<O>, O>;
+
+export interface IGenerator<O extends string = never> {
+  withLegend: () => Omitter<O | 'withLegend'>;
+  withTitle: (title: string) => Omitter<O | 'withTitle'>;
+  withGridLines: (which: Gridlines) => Omitter<O | 'withGridLines'>;
+  withTooltip: () => Omitter<O | 'withTooltip'>;
   generate(): ChartInstance;
 }

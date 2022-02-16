@@ -6,10 +6,12 @@ const myUser = {
 
 type UserType = typeof myUser;
 
-// utility types
+type OO = {
+  [P in keyof UserType]: UserType[P] extends string ? boolean : UserType[P];
+};
 
 // ----------------------------------------------------------
-type Unpack<T> = T;
+type Unpack<T> = T extends (infer U)[] ? U : T extends Promise<infer U> ? U : T extends () => infer U ? U : T;
 
 type UP1 = Unpack<string[]>;
 type UP2 = Unpack<number[]>;
@@ -21,9 +23,14 @@ type UP6 = Unpack<() => { name: string }>;
 // ----------------------------------------------------------
 
 type Animals = 'Monkey' | 'Horse' | 'Dog';
+type WithQ<T extends string> = `${T}??`;
+type AnimalsWithQ = WithQ<Animals>;
 
 // ----------------------------------------------------------
 
 type Lang = 'en' | 'he' | 'de';
 type Label = 'header' | 'footer' | 'side-title';
-type Translations = ``;
+type Translations = `${Label}__${Lang}`;
+
+type ReplaceUnder<T extends string> = T extends `${infer First}__${infer Last}` ? `${First}---${Last}` : T;
+

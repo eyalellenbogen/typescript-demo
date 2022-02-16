@@ -4,16 +4,20 @@
     "prefix": "basics-1",
     "body": ["function getValue(key: string) {", "\treturn myObj[key];", "}", "\ngetValue('asd');"]
   },
-  "strip 1":{
+  "strip 1": {
     "prefix": "strip-1",
     "body": "T[P] extends CannotCreateOrUpdate<infer U>\n\t\t?U\n\t\t:T "
   },
-  "strip 2":{
+  "strip 2": {
     "prefix": "strip-2",
     "body": "extends CannotCreate<infer U>\n\t\t?U\n\t\t:T "
   },
-  "strip 3":{
+  "strip 3": {
     "prefix": "strip-3",
     "body": "extends CannotUpdate<infer U>\n\t\t?U\n\t\t:T "
+  },
+  "p-in-keyof": {
+    "prefix": "p-in-keyof",
+    "body": "P in keyof T"
   }
 }
